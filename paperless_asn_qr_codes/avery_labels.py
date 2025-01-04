@@ -82,6 +82,15 @@ labelInfo: dict[str, LabelInfo] = {
         margin=(54, 36),
         pagesize=LETTER,
     ),
+    # 10mm x 16 mm
+    "herma10000": LabelInfo(
+        labels_horizontal=10,
+        labels_vertical=27,
+        label_size=(17.8 * mm, 10 * mm),
+        gutter_size=(2 * mm, 0 * mm),
+        margin=(6 * mm, 13.5 * mm),
+        pagesize=A4,
+    ),
 }
 
 RETURN_ADDRESS = 5167
@@ -90,7 +99,7 @@ BUSINESS_CARDS = 5371
 
 class AveryLabel:
     def __init__(self, label, debug,
-                 topDown=True, start_pos=None,
+                 topDown=False, start_pos=None,
                  **kwargs):
         data = labelInfo[label]
         self.across = data.labels_horizontal

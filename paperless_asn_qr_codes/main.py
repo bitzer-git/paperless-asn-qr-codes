@@ -4,7 +4,7 @@ import re
 from reportlab.lib.units import mm
 from reportlab_qrcode import QRCodeImage
 
-from paperless_asn_qr_codes import avery_labels
+import avery_labels
 
 
 def render(c, x, y):
@@ -12,12 +12,13 @@ def render(c, x, y):
     global digits
     barcode_value = f"ASN{startASN:0{digits}d}"
     startASN = startASN + 1
-
-    qr = QRCodeImage(barcode_value, size=y * 0.9)
-    qr.drawOn(c, 1 * mm, y * 0.05)
-    c.setFont("Helvetica", 2 * mm)
-    c.drawString(y, (y - 2 * mm) / 2, barcode_value)
-
+#    print(startASN, x / mm, y / mm)
+    qr = QRCodeImage(barcode_value, size=y * 1.0)
+    qr.drawOn(c, 1 * mm, 0 * mm)
+    c.setFont("Helvetica", 1.5 * mm)
+    c.rotate(90)
+    c.drawString( 1.5 * mm, - y - 2 * mm,  barcode_value)
+    c.rotate(-90)
 
 def main():
     # Match the starting position parameter. Allow x:y or n
@@ -41,12 +42,12 @@ def main():
         help="The output file to write to (default: labels.pdf)",
     )
     parser.add_argument(
-        "--format", "-f", choices=avery_labels.labelInfo.keys(), default="averyL4731"
+        "--format", "-f", choices=avery_labels.labelInfo.keys(), default="herma10000"
     )
     parser.add_argument(
         "--digits",
         "-d",
-        default=7,
+        default=5,
         help="Number of digits in the ASN (default: 7, produces 'ASN0000001')",
         type=int,
     )
@@ -59,7 +60,7 @@ def main():
     parser.add_argument(
         "--row-wise",
         "-r",
-        action="store_false",
+        action="store_true",
         help="Increment the ASNs row-wise, go from left to right",
     )
     parser.add_argument(
@@ -100,3 +101,8 @@ def main():
         count = args.pages * label.across * label.down - label.position
     label.render(render, count)
     label.close()
+
+if __name__ == "__main__":
+    main()
+
+# python3 ./main.py 0 -b -p 1 labels.pdf
