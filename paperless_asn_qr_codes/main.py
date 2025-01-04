@@ -11,7 +11,6 @@ def render(c, x, y):
     global startASN
     global digits
     barcode_value = f"ASN{startASN:0{digits}d}"
-    startASN = startASN + 1
 #    print(startASN, x / mm, y / mm)
     c.rotate(90)
     qr = QRCodeImage(barcode_value, size= 0.85 * y , border=0 )
@@ -19,6 +18,7 @@ def render(c, x, y):
     c.setFont("Helvetica", 3 * mm)
     c.drawString( ( 1.7 if startASN<10000 else 0.7 ) * mm, - y - 5 * mm,  f"{startASN:0{digits}d}")
     c.rotate(-90)
+    startASN = startASN + 1
 
 def main():
     # Match the starting position parameter. Allow x:y or n
