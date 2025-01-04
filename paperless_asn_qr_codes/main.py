@@ -14,8 +14,8 @@ def render(c, x, y):
     startASN = startASN + 1
 #    print(startASN, x / mm, y / mm)
     c.rotate(90)
-    qr = QRCodeImage(barcode_value, size= 0.9 * y , border=0 )
-    qr.drawOn(c, + 0.5 * mm, - y - 1 * mm)
+    qr = QRCodeImage(barcode_value, size= 0.85 * y , border=0 )
+    qr.drawOn(c, + 0.7 * mm, - y - 1 * mm)
     c.setFont("Helvetica", 3 * mm)
     c.drawString( ( 1.7 if startASN<10000 else 0.7 ) * mm, - y - 5 * mm,  f"{startASN:0{digits}d}")
     c.rotate(-90)
