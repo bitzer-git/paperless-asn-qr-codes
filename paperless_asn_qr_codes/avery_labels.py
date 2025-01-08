@@ -30,6 +30,15 @@ class LabelInfo:
 
 
 labelInfo: dict[str, LabelInfo] = {
+    # 10mm x 17.8 mm
+    "herma10000": LabelInfo(
+        labels_horizontal=10,
+        labels_vertical=27,
+        label_size=(17.8 * mm, 9.97 * mm),
+        gutter_size=(2.55 * mm, 0 * mm),
+        margin=(4.5 * mm, 13.3 * mm),
+        pagesize=A4,
+    ),
     "averyL4731": LabelInfo(
         labels_horizontal=7,
         labels_vertical=27,
@@ -81,16 +90,7 @@ labelInfo: dict[str, LabelInfo] = {
         gutter_size=(0, 0),
         margin=(54, 36),
         pagesize=LETTER,
-    ),
-    # 10mm x 16 mm
-    "herma10000": LabelInfo(
-        labels_horizontal=10,
-        labels_vertical=27,
-        label_size=(17.8 * mm, 10 * mm),
-        gutter_size=(2 * mm, 0 * mm),
-        margin=(6 * mm, 13.5 * mm),
-        pagesize=A4,
-    ),
+    )
 }
 
 RETURN_ADDRESS = 5167
