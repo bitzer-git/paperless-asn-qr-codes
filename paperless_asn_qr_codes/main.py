@@ -13,8 +13,8 @@ def render(c, x, y):
     barcode_value = f"ASN{startASN:0{digits}d}"
 #    print(startASN, x / mm, y / mm)
     c.rotate(90)
-    qr = QRCodeImage(barcode_value, size= 0.85 * y , border=0 )
-    qr.drawOn(c, + 0.7 * mm, - y - 1 * mm)
+    qr = QRCodeImage(barcode_value, size= 0.8 * y , border=0 )
+    qr.drawOn(c, + 1 * mm, - y - 1 * mm)
     c.setFont("Helvetica", 3 * mm)
     c.drawString( ( 1.7 if startASN<10000 else 0.7 ) * mm, - y - 5 * mm,  f"{startASN:0{digits}d}")
     c.rotate(-90)
@@ -105,4 +105,8 @@ def main():
 if __name__ == "__main__":
     main()
 
-# python3 ./main.py 0 -b -p 1 labels.pdf
+
+# (paperless) xxxx > python3 ./main.py 0000 -p 1 labels_0000.pdf
+# (paperless) xxxx > python3 ./main.py 5000 -n 170 labels_5000.pdf
+# (paperless) xxxx > python3 ./main.py 7000 -n 50 -s 18:0 labels_7000.pdf
+# (paperless) xxxx > python3 ./main.py 8000 -n 50 -s 23:0 labels_8000.pdf

@@ -39,6 +39,14 @@ labelInfo: dict[str, LabelInfo] = {
         margin=(4.5 * mm, 13.3 * mm),
         pagesize=A4,
     ),
+    "averyL4730": LabelInfo(
+        labels_horizontal=10,
+        labels_vertical=27,
+        label_size=(17.8 * mm, 10 * mm),
+        gutter_size=(2.5 * mm, 0),
+        margin=(4.75 * mm, 13.5 * mm),
+        pagesize=A4,
+    ),
     "averyL4731": LabelInfo(
         labels_horizontal=7,
         labels_vertical=27,
