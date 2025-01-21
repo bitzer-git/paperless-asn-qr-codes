@@ -34,7 +34,7 @@ labelInfo: dict[str, LabelInfo] = {
     "herma10000": LabelInfo(
         labels_horizontal=10,
         labels_vertical=27,
-        label_size=(17.8 * mm, 9.97 * mm),
+        label_size=(17.8 * mm, 9.98 * mm),
         gutter_size=(2.55 * mm, 0 * mm),
         margin=(4.5 * mm, 13.3 * mm),
         pagesize=A4,
